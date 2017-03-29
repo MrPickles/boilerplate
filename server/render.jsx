@@ -1,4 +1,5 @@
 import React from 'react';
+import serialize from 'serialize-javascript';
 import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 import { createMemoryHistory, match, RouterContext } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -17,6 +18,7 @@ import NotFoundPage from '../client/modules/NotFoundPage';
 export default (req, res) => {
   const store = createStore(reducers, {}, applyMiddleware(...middlewares));
   const history = syncHistoryWithStore(createMemoryHistory(), store);
+  const initialState = store.getState();
 
   match({
     history,
@@ -48,8 +50,9 @@ export default (req, res) => {
       res.status(404);
       content = renderToString(<NotFoundPage />);
     }
+    const state = `window.__INITIAL_STATE__ = ${serialize(initialState)}`;
     const doctype = '<!doctype html>\n';
-    const html = renderToStaticMarkup(<Html {...{ content }} />);
+    const html = renderToStaticMarkup(<Html {...{ state, content }} />);
     return res.send(doctype + html);
   });
 };

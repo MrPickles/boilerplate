@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const Html = ({ content }) => {
+const Html = ({ state, content }) => {
   return (
     <html lang="en">
       <head>
