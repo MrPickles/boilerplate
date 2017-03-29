@@ -1,9 +1,11 @@
 import React from 'react';
-import { renderToString } from 'react-dom/server';
+import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 import { createMemoryHistory, match, RouterContext } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+
+import Html from './Html';
 
 import routes from '../client/routes';
 import reducers from '../client/reducers';
@@ -21,7 +23,7 @@ export default (req, res) => {
     routes,
     location: req.url,
   }, (err, redirectLocation, renderProps) => {
-    let markup;
+    let content;
 
     if (redirectLocation) {
       return res.redirect(302,
@@ -31,21 +33,23 @@ export default (req, res) => {
     if (err) {
       console.log(err); // eslint-disable-line no-console
       res.status(500);
-      markup = renderToString(<ErrorPage />);
+      content = renderToString(<ErrorPage />);
     } else if (renderProps) {
       // Give 404 status code if we're supposed to render a 404 page.
       if (renderProps.components.indexOf(NotFoundPage) !== -1) {
         res.status(404);
       }
-      markup = renderToString((
+      content = renderToString((
         <Provider store={store}>
           <RouterContext {...renderProps} />
         </Provider>
       ));
     } else {
       res.status(404);
-      markup = renderToString(<NotFoundPage />);
+      content = renderToString(<NotFoundPage />);
     }
-    return res.render('index', { markup });
+    const doctype = '<!doctype html>\n';
+    const html = renderToStaticMarkup(<Html {...{ content }} />);
+    return res.send(doctype + html);
   });
 };
