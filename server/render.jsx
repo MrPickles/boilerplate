@@ -1,14 +1,23 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { match, RouterContext } from 'react-router';
+import { createMemoryHistory, match, RouterContext } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 
 import routes from '../client/routes';
+import reducers from '../client/reducers';
+import middlewares from '../client/middlewares';
 
 import ErrorPage from '../client/modules/ErrorPage';
 import NotFoundPage from '../client/modules/NotFoundPage';
 
 export default (req, res) => {
+  const store = createStore(reducers, {}, applyMiddleware(...middlewares));
+  const history = syncHistoryWithStore(createMemoryHistory(), store);
+
   match({
+    history,
     routes,
     location: req.url,
   }, (err, redirectLocation, renderProps) => {
@@ -28,7 +37,11 @@ export default (req, res) => {
       if (renderProps.components.indexOf(NotFoundPage) !== -1) {
         res.status(404);
       }
-      markup = renderToString(<RouterContext {...renderProps} />);
+      markup = renderToString((
+        <Provider store={store}>
+          <RouterContext {...renderProps} />
+        </Provider>
+      ));
     } else {
       res.status(404);
       markup = renderToString(<NotFoundPage />);

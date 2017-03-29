@@ -12,7 +12,7 @@ import routes from './routes';
 import reducers from './reducers';
 import middlewares from './middlewares';
 
-const initialState = window.__INITIAL_STATE__;
+const initialState = window.__INITIAL_STATE__; // eslint-disable-line no-underscore-dangle
 const store = createStore(reducers, initialState, applyMiddleware(...middlewares));
 const history = syncHistoryWithStore(browserHistory, store);
 
