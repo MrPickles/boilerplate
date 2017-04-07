@@ -4,19 +4,17 @@ import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 import { createMemoryHistory, match, RouterContext } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
 
 import Html from './Html';
 
+import configureStore from '../client/redux';
 import routes from '../client/routes';
-import reducers from '../client/reducers';
-import middlewares from '../client/middlewares';
 
 import ErrorPage from '../client/modules/ErrorPage';
 import NotFoundPage from '../client/modules/NotFoundPage';
 
 export default (req, res) => {
-  const store = createStore(reducers, {}, applyMiddleware(...middlewares));
+  const store = configureStore({});
   const history = syncHistoryWithStore(createMemoryHistory(), store);
   const initialState = store.getState();
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -9,11 +8,10 @@ import IO from 'socket.io-client';
 import './global.scss';
 
 import routes from './routes';
-import reducers from './reducers';
-import middlewares from './middlewares';
+import configureStore from './redux';
 
 const initialState = window.__INITIAL_STATE__; // eslint-disable-line no-underscore-dangle
-const store = createStore(reducers, initialState, applyMiddleware(...middlewares));
+const store = configureStore(initialState);
 const history = syncHistoryWithStore(browserHistory, store);
 
 const socket = IO();
