@@ -10,8 +10,8 @@ import Html from './Html';
 import configureStore from '../client/redux';
 import routes from '../client/routes';
 
-import ErrorPage from '../client/modules/ErrorPage';
-import NotFoundPage from '../client/modules/NotFoundPage';
+import ErrorPage from '../client/components/ErrorPage';
+import NotFoundPage from '../client/components/NotFoundPage';
 
 export default (req, res) => {
   const store = configureStore({});

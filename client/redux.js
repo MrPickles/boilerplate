@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware } from 'redux';
 
 import reducers from './reducers';
-import middlewares from './middlewares';
+import middleware from './middleware';
 
 const configureStore = (initialState) => {
-  return createStore(reducers, initialState, applyMiddleware(...middlewares));
-}
+  return createStore(reducers, initialState, applyMiddleware(...middleware));
+};
 
 export default configureStore;
