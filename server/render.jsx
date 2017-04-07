@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 
 import Html from './Html';
 
-import configureStore from '../client/redux';
+import configureStore from '../client/store/configureStore';
 import routes from '../client/routes';
 
 import ErrorPage from '../client/components/ErrorPage';

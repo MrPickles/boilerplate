@@ -8,7 +8,7 @@ import IO from 'socket.io-client';
 import './global.scss';
 
 import routes from './routes';
-import configureStore from './redux';
+import configureStore from './store/configureStore';
 
 const initialState = window.__INITIAL_STATE__; // eslint-disable-line no-underscore-dangle
 const store = configureStore(initialState);
