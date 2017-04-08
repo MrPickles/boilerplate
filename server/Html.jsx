@@ -13,7 +13,6 @@ const Html = ({ state, content }) => {
         {helmet.link.toComponent()}
       </head>
       <body>
-        <p>This is a paragraph</p>
         <div id="app-root" dangerouslySetInnerHTML={{ __html: content }} />
         <script dangerouslySetInnerHTML={{ __html: state }} />
         <script src="/public/js/bundle.js" />
