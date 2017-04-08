@@ -7,7 +7,6 @@ const config = {
   // Include source map in development.
   devtool: (process.env.NODE_ENV === 'development' ?
             'inline-source-map' : 'hidden-source-map'),
-  debug: true,
 
   entry: path.resolve(__dirname, 'app/main.jsx'),
 
@@ -17,28 +16,32 @@ const config = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   },
 
   module: {
-    loaders: [{
+    rules: [{
       test: /\.jsx?$/,
       include: /app/,
-      loader: 'babel',
+      loader: 'babel-loader',
       query: {
         presets: ['react', 'es2015'],
       },
     }, {
       test: /\.s?css$/,
-      loader: ExtractTextPlugin.extract('style-loader',
+      loader: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
           'css-loader?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
           'resolve-url-loader',
-          'sass-loader?sourceMap'),
+          'sass-loader?sourceMap',
+        ],
+      }),
     }],
   },
 
   plugins: [
-    new ExtractTextPlugin('css/style.css', { allChunks: true }),
+    new ExtractTextPlugin({ filename: 'css/style.css', allChunks: true }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production')
@@ -63,11 +66,11 @@ const serverConfig = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   },
 
   module: {
-    loaders: [{
+    rules: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: 'babel-loader',
