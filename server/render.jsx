@@ -7,11 +7,11 @@ import { Provider } from 'react-redux';
 
 import Html from './Html';
 
-import configureStore from '../client/store/configureStore';
-import routes from '../client/routes';
+import configureStore from '../app/store/configureStore';
+import routes from '../app/routes';
 
-import ErrorPage from '../client/components/ErrorPage';
-import NotFoundPage from '../client/components/NotFoundPage';
+import ErrorPage from '../app/components/ErrorPage';
+import NotFoundPage from '../app/components/NotFoundPage';
 
 export default (req, res) => {
   const store = configureStore({});

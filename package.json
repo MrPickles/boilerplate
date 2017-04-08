@@ -11,8 +11,8 @@
     "postinstall": "npm run build",
     "watch": "NODE_ENV=development webpack --watch",
     "clean": "rm -rf ./dist/",
-    "test": "mocha \"client/**/*.spec.js\" \"server/**/*.spec.js\"",
-    "lint": "eslint --ext .js --ext .jsx index.js client server"
+    "test": "mocha \"app/**/*.spec.js\" \"server/**/*.spec.js\"",
+    "lint": "eslint --ext .js --ext .jsx index.js app server"
   },
   "repository": {
     "type": "git",

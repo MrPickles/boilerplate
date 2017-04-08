@@ -9,7 +9,7 @@ const config = {
             'inline-source-map' : 'hidden-source-map'),
   debug: true,
 
-  entry: path.resolve(__dirname, 'client/main.jsx'),
+  entry: path.resolve(__dirname, 'app/main.jsx'),
 
   output: {
     path: path.resolve(__dirname, 'dist/public/'),
@@ -23,7 +23,7 @@ const config = {
   module: {
     loaders: [{
       test: /\.jsx?$/,
-      include: /client/,
+      include: /app/,
       loader: 'babel',
       query: {
         presets: ['react', 'es2015'],
@@ -76,7 +76,7 @@ const serverConfig = {
       },
     }, {
       test: /\.s?css$/,
-      include: /client/,
+      include: /app/,
       loader: 'css-loader/locals?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass-loader',
     }],
   },
