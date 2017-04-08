@@ -15,7 +15,7 @@ export default function Layout(props) {
         link={[
           { rel: 'stylesheet', href: '/public/css/semantic.min.css' },
           { rel: 'stylesheet', href: '/public/css/style.css' },
-          { rel: 'icon', href: 'https://diegohaz.github.io/arc/icon.png' },
+          { rel: 'icon', href: '/public/img/redux.png' },
         ]}
       />
       <div className="layout-content">{props.children}</div>
