@@ -24,9 +24,6 @@ const config = {
       test: /\.jsx?$/,
       include: /app/,
       loader: 'babel-loader',
-      query: {
-        presets: ['react', 'es2015'],
-      },
     }, {
       test: /\.s?css$/,
       loader: ExtractTextPlugin.extract({
@@ -74,9 +71,6 @@ const serverConfig = {
       test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: 'babel-loader',
-      query: {
-        presets: ['react', 'es2015'],
-      },
     }, {
       test: /\.s?css$/,
       include: /app/,
