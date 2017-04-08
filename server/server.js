@@ -24,6 +24,7 @@ app.use(compression());
 app.use('/public', express.static(path.join(__dirname, '../dist/public')));
 app.use('/public/css',
     express.static(path.join(__dirname, '../node_modules/semantic-ui-css')));
+app.use('/public/img', express.static(path.join(__dirname, '../public/img')));
 
 app.get('*', render);
 
