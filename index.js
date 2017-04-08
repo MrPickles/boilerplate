@@ -9,17 +9,6 @@ if (fs.existsSync(path.join(__dirname, '.env'))) {
   dotenv.config();
 }
 
-/*
- * Run the bundled server code in production, and run the runtime-generated
- * server code in development.
- */
-
 /* eslint-disable global-require */
-if (process.env.NODE_ENV !== 'development') {
-  process.env.NODE_ENV = 'production';
-  require('./dist/server.bundle.js');
-} else {
-  require('css-modules-require-hook/preset');
-  require('./src/server.js');
-}
+require('./src/server.js');
 /* eslint-enable global-require */

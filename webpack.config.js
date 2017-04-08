@@ -3,7 +3,7 @@ const nodeExternals = require('webpack-node-externals');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const config = {
+module.exports = {
   // Include source map in development.
   devtool: (process.env.NODE_ENV === 'development' ?
             'inline-source-map' : 'hidden-source-map'),
@@ -17,7 +17,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist/public/'),
     filename: 'js/bundle.js',
-    publicPath: '/',
+    publicPath: '/public/js',
   },
 
   resolve: {
@@ -54,40 +54,3 @@ const config = {
     new webpack.NoEmitOnErrorsPlugin(),
   ],
 };
-
-const serverConfig = {
-  entry: path.resolve(__dirname, 'src/server.js'),
-  target: 'node',
-  externals: [nodeExternals()],
-
-  node: {
-    __dirname: false,
-    __filename: false,
-  },
-
-  output: {
-    path: path.resolve(__dirname, 'dist/'),
-    filename: 'server.bundle.js',
-  },
-
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
-
-  module: {
-    rules: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-    }, {
-      test: /\.s?css$/,
-      include: /src/,
-      loader: 'css-loader/locals?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass-loader',
-    }],
-  },
-};
-
-// Exclude server build in development.
-module.exports = (process.env.NODE_ENV === 'development'
-    ? config
-    : [config, serverConfig]);

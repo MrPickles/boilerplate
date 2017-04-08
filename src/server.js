@@ -1,17 +1,16 @@
-import express from 'express';
-import http from 'http';
-import mongoose from 'mongoose';
-import path from 'path';
-import Socket from 'socket.io';
-import compression from 'compression';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
+const express = require('express');
+const http = require('http');
+const mongoose = require('mongoose');
+const path = require('path');
+const Socket = require('socket.io');
+const compression = require('compression');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
 
-import render from './render';
-import websocket from './services/websocket';
+const websocket = require('./services/websocket');
 
-import webpackConfig from '../webpack.config';
+const webpackConfig = require('../webpack.config');
 
 const app = express();
 const server = http.Server(app);
@@ -40,7 +39,9 @@ app.use('/public/css',
     express.static(path.join(__dirname, '../node_modules/semantic-ui-css')));
 app.use('/public/img', express.static(path.join(__dirname, '../public/img')));
 
-app.get('*', render);
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './index.html'));
+});
 
 mongoose.connection.once('open', () => {
   server.listen(app.get('port'), () => {
