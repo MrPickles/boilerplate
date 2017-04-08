@@ -4,13 +4,27 @@ import mongoose from 'mongoose';
 import path from 'path';
 import Socket from 'socket.io';
 import compression from 'compression';
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 
 import render from './render';
 import websocket from './services/websocket';
 
+import webpackConfig from '../webpack.config';
+
 const app = express();
 const server = http.Server(app);
 const io = Socket(server);
+const compiler = webpack(webpackConfig);
+
+if (process.env.NODE_ENV !== 'production') {
+  app.use(webpackDevMiddleware(compiler, {
+    noInfo: true,
+    publicPath: webpackConfig.output.publicPath,
+  }));
+  app.use(webpackHotMiddleware(compiler));
+}
 
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on('error', () => {

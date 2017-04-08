@@ -8,11 +8,16 @@ const config = {
   devtool: (process.env.NODE_ENV === 'development' ?
             'inline-source-map' : 'hidden-source-map'),
 
-  entry: path.resolve(__dirname, 'src/client.jsx'),
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client',
+    path.resolve(__dirname, 'src/client.jsx'),
+  ],
 
   output: {
     path: path.resolve(__dirname, 'dist/public/'),
     filename: 'js/bundle.js',
+    publicPath: '/',
   },
 
   resolve: {
@@ -44,6 +49,9 @@ const config = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production')
       }
     }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
   ],
 };
 
