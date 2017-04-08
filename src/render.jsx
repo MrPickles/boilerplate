@@ -5,13 +5,13 @@ import { createMemoryHistory, match, RouterContext } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 
-import Html from './Html';
+import Html from './services/Html';
 
-import configureStore from '../app/store/configureStore';
-import routes from '../app/routes';
+import configureStore from './store/configureStore';
+import routes from './routes';
 
-import ErrorPage from '../app/components/ErrorPage';
-import NotFoundPage from '../app/components/NotFoundPage';
+import ErrorPage from './components/ErrorPage';
+import NotFoundPage from './components/NotFoundPage';
 
 export default (req, res) => {
   const store = configureStore({});

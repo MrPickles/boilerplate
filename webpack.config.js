@@ -8,7 +8,7 @@ const config = {
   devtool: (process.env.NODE_ENV === 'development' ?
             'inline-source-map' : 'hidden-source-map'),
 
-  entry: path.resolve(__dirname, 'app/main.jsx'),
+  entry: path.resolve(__dirname, 'src/client.jsx'),
 
   output: {
     path: path.resolve(__dirname, 'dist/public/'),
@@ -22,7 +22,7 @@ const config = {
   module: {
     rules: [{
       test: /\.jsx?$/,
-      include: /app/,
+      include: /src/,
       loader: 'babel-loader',
     }, {
       test: /\.s?css$/,
@@ -48,7 +48,7 @@ const config = {
 };
 
 const serverConfig = {
-  entry: path.resolve(__dirname, 'server/server.js'),
+  entry: path.resolve(__dirname, 'src/server.js'),
   target: 'node',
   externals: [nodeExternals()],
 
@@ -73,7 +73,7 @@ const serverConfig = {
       loader: 'babel-loader',
     }, {
       test: /\.s?css$/,
-      include: /app/,
+      include: /src/,
       loader: 'css-loader/locals?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass-loader',
     }],
   },

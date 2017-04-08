@@ -20,6 +20,6 @@ if (process.env.NODE_ENV !== 'development') {
   require('./dist/server.bundle.js');
 } else {
   require('css-modules-require-hook/preset');
-  require('./server/server.js');
+  require('./src/server.js');
 }
 /* eslint-enable global-require */

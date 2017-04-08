@@ -6,7 +6,7 @@ import Socket from 'socket.io';
 import compression from 'compression';
 
 import render from './render';
-import websocket from './websocket';
+import websocket from './services/websocket';
 
 const app = express();
 const server = http.Server(app);
