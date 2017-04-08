@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
 
 const Html = ({ state, content }) => {
   const helmet = Helmet.rewind();

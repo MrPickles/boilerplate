@@ -24,6 +24,7 @@
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "mongoose": "^4.7.6",
+    "prop-types": "^15.5.4",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-helmet": "^5.0.2",
