@@ -1,7 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import PropTypes from 'prop-types';
 
-export default function Layout(props) {
+const Layout = (props) => {
   return (
     <div>
       <Helmet
@@ -24,5 +25,7 @@ export default function Layout(props) {
 }
 
 Layout.propTypes = {
-  children: React.PropTypes.element.isRequired,
+  children: PropTypes.element.isRequired,
 };
+
+export default Layout;

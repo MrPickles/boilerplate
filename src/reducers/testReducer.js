@@ -1,6 +1,6 @@
 import { TEST_ACTION } from '../actions';
 
-const testReducer = (state = {}, action) => {
+const testReducer = (state = { amount: 0 }, action) => {
   switch (action.type) {
     case TEST_ACTION:
       return Object.assign({}, state, {
