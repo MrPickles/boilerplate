@@ -1,3 +1,5 @@
+import { EPIC_END } from 'redux-observable';
+
 import { PING, PONG } from '../actions';
 
 const pingReducer = (state = { pinging: false }, action) => {
@@ -10,6 +12,7 @@ const pingReducer = (state = { pinging: false }, action) => {
       return Object.assign({}, state, {
         pinging: false,
       });
+    case EPIC_END:
     default:
       return state;
   }
