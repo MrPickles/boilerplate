@@ -12,6 +12,8 @@ const IndexPage = (props) => {
       <Link to="/test"><Button>Test Page</Button></Link>
       <Button onClick={props.onClick}>Click me!</Button>
       <p>Counter: {props.amount}</p>
+      <Button onClick={props.onPing}>Ping me!</Button>
+      <p>Pinging: {String(props.pinging)}</p>
     </div>
   );
 }
