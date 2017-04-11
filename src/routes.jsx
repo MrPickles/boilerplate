@@ -4,7 +4,7 @@ import { Route, IndexRoute } from 'react-router';
 import IndexPageContainer from './containers/IndexPageContainer';
 import TestPage from './components/TestPage/TestPage';
 import NotFoundPage from './components/NotFoundPage';
-import Layout from './components/Layout';
+import Layout from './components/Layout/Layout';
 
 export default (
   <Route path="/" component={Layout}>

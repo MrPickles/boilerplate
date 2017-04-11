@@ -2,8 +2,10 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 
+import styles from './Layout.scss';
+
 const Layout = props => (
-  <div>
+  <div className={styles.layout}>
     <Helmet
       title="Boilerplate!"
       meta={[

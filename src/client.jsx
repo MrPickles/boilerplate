@@ -6,8 +6,6 @@ import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import IO from 'socket.io-client';
 
-import './global.scss';
-
 import routes from './routes';
 import configureStore from './store/configureStore';
 
