@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import IndexPageContainer from './containers/IndexPageContainer';
-import IndexPage from './components/IndexPage/IndexPage';
 import TestPage from './components/TestPage/TestPage';
 import NotFoundPage from './components/NotFoundPage';
 import Layout from './components/Layout';

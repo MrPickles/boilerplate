@@ -35,7 +35,8 @@ render();
 
 if (module.hot) {
   module.hot.accept('./routes', () => {
+    // eslint-disable-next-line global-require
     require('./routes');
     render();
-  })
+  });
 }

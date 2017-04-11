@@ -1,5 +1,5 @@
 import { combineEpics } from 'redux-observable';
-import { ofType, delay, mapTo } from 'rxjs';
+import 'rxjs';
 
 import { PING, sendPong } from '../actions';
 

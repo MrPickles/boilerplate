@@ -4,9 +4,12 @@ const mongoose = require('mongoose');
 const path = require('path');
 const Socket = require('socket.io');
 const compression = require('compression');
+
+/* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
+/* eslint-enable import/no-extraneous-dependencies */
 
 const websocket = require('./services/websocket');
 
