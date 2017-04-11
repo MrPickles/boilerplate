@@ -9,7 +9,7 @@ const configureStore = (initialState) => {
   if (module.hot) {
     module.hot.accept('../reducers', () => {
       // eslint-disable-next-line global-require
-      store.replaceReducer(require().default);
+      store.replaceReducer(require('../reducers').default);
     });
   }
   return store;
