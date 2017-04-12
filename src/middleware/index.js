@@ -11,8 +11,6 @@ const middleware = [epicMiddleware, logger];
 const req = require.context('.', true, /^\.\/((?!index|\.spec).)*\.js$/);
 
 req.keys().forEach((key) => {
-  // Set store name as base filename and prepend to the middleware array.
-  const storeName = key.replace(/^\..*\/(.*)\.js$/, '$1');
   middleware.unshift(req(key).default);
 });
 
