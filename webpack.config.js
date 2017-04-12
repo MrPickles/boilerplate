@@ -3,14 +3,13 @@ const nodeExternals = require('webpack-node-externals');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = {
+const debug = process.env.NODE_ENV === 'development';
+
+const config = {
   // Include source map in development.
-  devtool: (process.env.NODE_ENV === 'development' ?
-            'inline-source-map' : 'hidden-source-map'),
+  devtool: debug ? 'inline-source-map' : 'hidden-source-map',
 
   entry: [
-    'react-hot-loader/patch',
-    'webpack-hot-middleware/client',
     path.resolve(__dirname, 'src/client.jsx'),
   ],
 
@@ -49,8 +48,19 @@ module.exports = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production')
       }
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
   ],
 };
+
+if (debug) {
+  config.entry.unshift(
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client'
+  );
+  config.plugins.push(
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
+  );
+}
+
+module.exports = config;
