@@ -1,16 +1,10 @@
-export const TEST_ACTION = 'TEST_ACTION';
-export const PING = 'PING';
-export const PONG = 'PONG';
+const req = require.context('.', true, /^\.\/((?!index|\.spec).)*\.js$/);
 
-export const testAction = amount => ({
-  type: TEST_ACTION,
-  amount,
-});
+req.keys().forEach((key) => {
+  const actions = req(key);
 
-export const sendPing = () => ({
-  type: PING,
-});
-
-export const sendPong = () => ({
-  type: PONG,
+  // Export every item exported by other action files.
+  Object.keys(actions).forEach((name) => {
+    module.exports[name] = actions[name];
+  });
 });
