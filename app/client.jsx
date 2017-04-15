@@ -7,9 +7,10 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import IO from 'socket.io-client';
 
 import routes from './routes';
-import configureStore from './store/configureStore';
+import configureStore from './configureStore';
 
-const initialState = window.__INITIAL_STATE__; // eslint-disable-line no-underscore-dangle
+// eslint-disable-next-line no-underscore-dangle
+const initialState = window.__INITIAL_STATE__;
 const store = configureStore(initialState);
 const history = syncHistoryWithStore(browserHistory, store);
 
