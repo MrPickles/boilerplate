@@ -43,7 +43,7 @@ app.use('/public/css',
 app.use('/public/img', express.static(path.join(__dirname, '../public/img')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './index.html'));
+  res.sendFile(path.resolve(__dirname, '../dist/index.html'));
 });
 
 mongoose.connection.once('open', () => {
