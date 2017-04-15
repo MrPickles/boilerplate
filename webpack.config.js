@@ -30,6 +30,11 @@ const config = {
 
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias: {
+      actions: path.resolve(__dirname, 'app', 'actions'),
+      components: path.resolve(__dirname, 'app', 'components'),
+      containers: path.resolve(__dirname, 'app', 'containers'),
+    },
   },
 
   module: {

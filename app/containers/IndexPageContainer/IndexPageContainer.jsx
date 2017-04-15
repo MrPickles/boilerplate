@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import { testAction, PING } from '../../actions';
-import IndexPage from '../../components/IndexPage';
+import { testAction, PING } from 'actions';
+import { IndexPage } from 'components';
 
 const mapStateToProps = state => ({
   amount: state.testReducer.amount,

@@ -1,6 +1,6 @@
 import { EPIC_END } from 'redux-observable';
 
-import { PING, PONG } from '../actions';
+import { PING, PONG } from 'actions';
 
 const pingReducer = (state = { pinging: false }, action) => {
   switch (action.type) {
