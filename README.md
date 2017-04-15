@@ -1,44 +1,88 @@
-# Boilerplate Tasks
+# Boilerplate
 
-[![Build Status](https://travis-ci.com/MrPickles/boilerplate.svg?token=HL4GfADW1tek1pK4Skh9&branch=master)](https://travis-ci.com/MrPickles/boilerplate)
+[![Build Status][travis_svg]][travis_url]
 
-Below are goals that I want in this boilerplate repo's functionality.
+This is a boilerplate for React apps. It uses [React][react] and [Redux][redux]
+with [Redux Observables][observable] on the client side and is
+[Express][express] on the server. The application is built using
+[Webpack][webpack], and it has [Hot Module Replacement][hmr] to allow changes
+without refreshing in development. For styling, the app uses
+[CSS Modules][modules] with [Sass][sass].
 
-## Server Code
-- [x] Server code should be fully supported ES6 through [Babel](https://babeljs.io/).
-- [x] Server code in dev should ideally be compiled on the fly for easier debugging.
+## Usage
 
-## Client Code
-- [x] Client code in development should be in its native form as much as possible for easier debugging.
-- [x] The client-side JS should fully support [JSX](https://jsx.github.io/) syntax.
-- [x] The client-side HTML should fully support [Jade/Pug](https://pugjs.org/api/getting-started.html) (debateable).
-- [x] The client-side CSS should fully support [SASS](http://sass-lang.com/) syntax.
+First off, clone the repository.
 
-## Webpack, Build System, and Deploy
-- [x] Webpack server scripts should build ES6 server code.
-- [x] Webpack client scripts should build ES6/JSX/SASS code.
-- [x] The build scripts should have a watch option to rebuild automatically on file change.
-- [x] The build output should have a meaningful directory organization (if applicable).
-- [x] Minify client-side JS (e.g. [UglifyJS](https://github.com/mishoo/UglifyJS2)) in prod (but not dev) if possible.
-- [x] Have an automatic deploy (via [Heroku](https://www.heroku.com/) or some similar means).
+```bash
+git clone https://github.com/MrPickles/boilerplate
+cd boilerplate/
+npm install
+```
 
-## Testing Code
-- [x] Any testing code should not have friction with the build system. For instance, it should be ES6 and work with Babel.
-- [x] Test code should be able to be in the same directory as the code it tests, not just a universal `test/` directory.
-- [x] Have continuous integration for testing (e.g. [TravisCI](https://travis-ci.com/)).
+You then want to configure environment variables for the app. The app uses
+[dotenv][dotenv] to set up environment variables, so you should put any
+environment variables needed at runtime in the `.env` file. There is a
+`.env.example` file provided for guidance.
 
-## Linting
-- [x] Include a static linter (e.g. [ESLint](http://eslint.org/)).
-- [x] Use a linting configuration (`.eslintrc`) with good standards ([Airbnb](https://www.npmjs.com/package/eslint-config-airbnb)).
-- [ ] It would be nice to have lint errors prevent commits from registering.
+```bash
+cp .env.example .env
+```
 
-## Database
-- [x] Add [MongoDB](https://www.mongodb.com/) support via [Mongoose](http://mongoosejs.com/) (lol).
-- [ ] Include some database boilerplate code (e.g. schemas).
+### Running a production build
 
-## Miscelaneous
-- [ ] Organize the directory structure of the repo to be more scalable/neat.
-- [x] All runtime errors (testing, server, client) should be clearly labelled (e.g. line numbers and code) in dev.
-- [ ] A dev/debugging panel would be a nice luxury for development.
-- [x] Add environment and/or general configuration files/directory.
-- [ ] Migrate this task list to be separate issues as this codebase matures.
+To run the server in production, you'll want to build the bundled JavaScript and
+CSS that will be used in the client. Then you can start the server. There is a
+`build` and `prod` script to build the app and start the server in production,
+respectively. Alternatively, you can just run `npm start`.
+
+```bash
+npm run build
+npm run prod
+# or
+npm start
+```
+
+### Running a development build
+
+When developing, there is a development build that has development-specific
+advantages over the production build, such as automatic module replacement,
+server restarting, and source maps for debugging. To use the development build,
+run the `watch` script in the background or in a separate terminal to have
+Webpack compile the development build and watch for any changes in the code.
+Then run the development server.
+
+```bash
+npm run watch # run this in the background or in a separate terminal
+npm run dev
+```
+
+### Linting and Testing
+
+This repository uses [ESLint][eslint] and [Mocha][mocha] for linting and
+testing, respectively. To lint the code base, simply run the `lint` script. You
+can change the lint rules in `.eslintrc.json` based on your style preferences.
+
+```bash
+npm run lint
+```
+
+All tests must have `.spec.js` as its file extension. The testing script will
+search for all files with this extension and treat them as tests.
+
+```bash
+npm run test
+```
+
+[travis_svg]: <https://travis-ci.com/MrPickles/boilerplate.svg?token=HL4GfADW1tek1pK4Skh9&branch=master>
+[travis_url]: <https://travis-ci.com/MrPickles/boilerplate>
+[react]: <https://facebook.github.io/react/>
+[redux]: <http://redux.js.org/>
+[observable]: <https://redux-observable.js.org/>
+[express]: <https://expressjs.com/>
+[webpack]: <https://webpack.github.io/>
+[hmr]: <https://webpack.github.io/docs/hot-module-replacement.html>
+[modules]: <https://github.com/css-modules/css-modules>
+[sass]: <http://sass-lang.com/>
+[dotenv]: <https://github.com/motdotla/dotenv>
+[eslint]: <http://eslint.org/>
+[mocha]: <https://mochajs.org/>
