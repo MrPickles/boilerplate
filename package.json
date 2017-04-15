@@ -10,8 +10,8 @@
     "build": "npm run clean && NODE_ENV=production webpack -p",
     "watch": "npm run clean && NODE_ENV=development webpack --watch",
     "clean": "rm -rf ./dist/",
-    "test": "NODE_ENV=test mocha \"src/**/*.spec.js\"",
-    "lint": "eslint --ext .js --ext .jsx index.js src"
+    "test": "NODE_ENV=test mocha \"app/**/*.spec.js\" \"server/**/*.spec.js\"",
+    "lint": "eslint --ext .js --ext .jsx index.js app server"
   },
   "repository": {
     "type": "git",

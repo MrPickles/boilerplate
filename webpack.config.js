@@ -19,7 +19,7 @@ const config = {
   devtool: debug ? 'inline-source-map' : 'hidden-source-map',
 
   entry: {
-    app: [path.resolve(__dirname, 'src/client.jsx')],
+    app: [path.resolve(__dirname, 'app/client.jsx')],
   },
 
   output: {
@@ -35,7 +35,7 @@ const config = {
   module: {
     rules: [{
       test: /\.jsx?$/,
-      include: /src/,
+      include: /app/,
       loader: 'babel-loader',
     }],
   },

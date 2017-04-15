@@ -10,5 +10,5 @@ if (fs.existsSync(path.join(__dirname, '.env'))) {
 }
 
 /* eslint-disable global-require */
-require('./src/server.js');
+require('./server/server.js');
 /* eslint-enable global-require */
