@@ -6,10 +6,12 @@ const Socket = require('socket.io');
 const compression = require('compression');
 
 const websocket = require('./services/websocket');
+const api = require('./api');
 
 const app = express();
 const server = http.Server(app);
 const io = Socket(server);
+const router = express.Router();
 
 // Set up express as an HMR server in development.
 if (process.env.NODE_ENV !== 'production') {
@@ -29,6 +31,8 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(webpackHotMiddleware(compiler));
 }
 
+router.use('/api', api);
+
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on('error', () => {
   console.log('Database connection failed!'); // eslint-disable-line no-console
@@ -38,6 +42,7 @@ mongoose.connection.on('error', () => {
 app.set('port', process.env.PORT || 3000);
 
 app.use(compression());
+app.use(router);
 app.use('/public', express.static(path.join(__dirname, '../dist/public')));
 app.use('/public/img', express.static(path.join(__dirname, '../public/img')));
 
