@@ -79,7 +79,7 @@ npm run test
 [redux]: <http://redux.js.org/>
 [observable]: <https://redux-observable.js.org/>
 [express]: <https://expressjs.com/>
-[webpack]: <https://webpack.github.io/>
+[webpack]: <https://webpack.js.org/>
 [hmr]: <https://webpack.github.io/docs/hot-module-replacement.html>
 [modules]: <https://github.com/css-modules/css-modules>
 [sass]: <http://sass-lang.com/>
