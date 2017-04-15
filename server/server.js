@@ -5,6 +5,7 @@ const path = require('path');
 const Socket = require('socket.io');
 const compression = require('compression');
 const winston = require('winston');
+const morgan = require('morgan');
 
 const websocket = require('./services/websocket');
 const api = require('./api');
@@ -31,6 +32,7 @@ mongoose.connection.on('error', () => {
 app.set('port', process.env.PORT || 3000);
 
 app.use(compression());
+app.use(morgan('dev'));
 app.use(router);
 app.use('/public', express.static(path.join(__dirname, '../dist/public')));
 app.use('/public/img', express.static(path.join(__dirname, '../public/img')));

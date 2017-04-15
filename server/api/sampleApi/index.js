@@ -1,9 +1,9 @@
 const Router = require('express').Router;
 
-const sampleApi = require('./sampleApi');
+const sampleController = require('./sampleController');
 
 const router = new Router();
 
-router.use('/sampleApi', sampleApi);
+router.get('/ping', sampleController.ping);
 
 module.exports = router;
