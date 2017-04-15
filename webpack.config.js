@@ -73,7 +73,23 @@ if (debug) {
   // Load CSS modules normally to allow HMR.
   config.module.rules.push({
     test: /\.s?css$/,
-    loader: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'resolve-url-loader', 'sass-loader?sourceMap'],
+    use: [{
+      loader: 'style-loader',
+    }, {
+      loader: 'css-loader',
+      options: {
+        modules: true,
+        importLoaders: 1,
+        localIdentName: '[name]__[local]___[hash:base64:5]'
+      },
+    }, {
+      loader: 'resolve-url-loader',
+    }, {
+      loader: 'sass-loader',
+      options: {
+        sourceMap: true,
+      },
+    }],
   });
 } else {
   // Production-specific configuration.
@@ -85,11 +101,22 @@ if (debug) {
     test: /\.s?css$/,
     loader: ExtractTextPlugin.extract({
       fallback: 'style-loader',
-      use: [
-        'css-loader?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-        'resolve-url-loader',
-        'sass-loader?sourceMap',
-      ],
+      use: [{
+        loader: 'css-loader',
+        options: {
+          sourceMap: true,
+          modules: true,
+          importLoaders: 1,
+          localIdentName: '[name]__[local]___[hash:base64:5]',
+        },
+      }, {
+        loader: 'resolve-url-loader',
+      }, {
+        loader: 'sass-loader',
+        options: {
+          sourceMap: true,
+        },
+      }],
     }),
   });
 }
