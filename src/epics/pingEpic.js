@@ -1,5 +1,5 @@
-import { delay } from 'rxjs/add/operator/delay';
-import { mapTo } from 'rxjs/add/operator/mapTo';
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/mapTo';
 
 import { PING, sendPong } from '../actions';
 
