@@ -15,20 +15,8 @@ const router = express.Router();
 
 // Set up express as an HMR server in development.
 if (process.env.NODE_ENV !== 'production') {
-  /* eslint-disable global-require */
-  /* eslint-disable import/no-extraneous-dependencies */
-  const webpack = require('webpack');
-  const webpackDevMiddleware = require('webpack-dev-middleware');
-  const webpackHotMiddleware = require('webpack-hot-middleware');
-  /* eslint-enable import/no-extraneous-dependencies */
-  const webpackConfig = require('../webpack.config');
-  /* eslint-enable global-require */
-  const compiler = webpack(webpackConfig);
-  app.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
-    publicPath: webpackConfig.output.publicPath,
-  }));
-  app.use(webpackHotMiddleware(compiler));
+  // eslint-disable-next-line global-require
+  require('./hmr')(app);
 }
 
 router.use('/api', api);
