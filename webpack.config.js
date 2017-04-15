@@ -63,7 +63,7 @@ const config = {
     }),
     // Inject built bundles into html file.
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'public/index.html',
       inject: true,
     }),
   ],
