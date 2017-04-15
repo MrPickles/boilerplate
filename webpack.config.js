@@ -41,11 +41,7 @@ const config = {
   },
 
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production')
-      }
-    }),
+    new webpack.EnvironmentPlugin(['NODE_ENV']),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       // Separate all vendor files into separate bundle.
