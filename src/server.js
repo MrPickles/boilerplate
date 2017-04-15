@@ -5,22 +5,23 @@ const path = require('path');
 const Socket = require('socket.io');
 const compression = require('compression');
 
-/* eslint-disable import/no-extraneous-dependencies */
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-/* eslint-enable import/no-extraneous-dependencies */
-
 const websocket = require('./services/websocket');
-
-const webpackConfig = require('../webpack.config');
 
 const app = express();
 const server = http.Server(app);
 const io = Socket(server);
-const compiler = webpack(webpackConfig);
 
+// Set up express as an HMR server in development.
 if (process.env.NODE_ENV !== 'production') {
+  /* eslint-disable global-require */
+  /* eslint-disable import/no-extraneous-dependencies */
+  const webpack = require('webpack');
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  const webpackHotMiddleware = require('webpack-hot-middleware');
+  /* eslint-enable import/no-extraneous-dependencies */
+  const webpackConfig = require('../webpack.config');
+  /* eslint-enable global-require */
+  const compiler = webpack(webpackConfig);
   app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
     publicPath: webpackConfig.output.publicPath,
