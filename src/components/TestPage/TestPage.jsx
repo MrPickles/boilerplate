@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Button } from 'semantic-ui-react';
+import Button from 'react-bootstrap/lib/Button';
 
 import styles from './TestPage.scss';
 
