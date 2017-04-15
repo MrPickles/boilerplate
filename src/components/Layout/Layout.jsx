@@ -16,7 +16,6 @@ const Layout = props => (
       ]}
       link={[
         { rel: 'stylesheet', href: '/public/css/semantic.min.css' },
-        { rel: 'stylesheet', href: '/public/css/style.css' },
         { rel: 'icon', href: '/public/img/redux.png' },
       ]}
     />
