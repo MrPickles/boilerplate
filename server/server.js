@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const Socket = require('socket.io');
 const compression = require('compression');
+const winston = require('winston');
 
 const websocket = require('./services/websocket');
 const api = require('./api');
@@ -23,7 +24,7 @@ router.use('/api', api);
 
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on('error', () => {
-  console.log('Database connection failed!'); // eslint-disable-line no-console
+  winston.error('Database connection failed!');
   process.exit();
 });
 
@@ -40,9 +41,7 @@ app.get('*', (req, res) => {
 
 mongoose.connection.once('open', () => {
   server.listen(app.get('port'), () => {
-    // eslint-disable-next-line no-console
-    console.log('Server listening on port %d in %s mode.',
-        app.get('port'), process.env.NODE_ENV);
+    winston.info(`Server listening on port ${app.get('port')} in ${process.env.NODE_ENV} mode.`);
   });
 });
 
