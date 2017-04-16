@@ -7,19 +7,8 @@ import styles from './IndexPage.scss';
 
 class IndexPage extends React.Component {
 
-  constructor() {
-    super();
-    this.state = {
-      timesMounted: 0,
-    };
-  }
-
   componentDidMount() {
-    /*
-    this.setState({
-      timesMounted: this.state.timesMounted + 1,
-    });
-    */
+    // This is just included as an example for testing.
   }
 
   render() {
@@ -31,7 +20,6 @@ class IndexPage extends React.Component {
         <p>Counter: {this.props.amount}</p>
         <Button onClick={this.props.onPing}>Ping me!</Button>
         <p>Pinging: {String(this.props.pinging)}</p>
-        <p>Times componentDidMount was called: {this.state.timesMounted}</p>
       </div>
     );
   }
