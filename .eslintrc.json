@@ -21,5 +21,8 @@
         "config": "webpack.config.js"
       }
     }
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": 0
   }
 }
