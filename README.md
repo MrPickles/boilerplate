@@ -47,12 +47,13 @@ npm start
 When developing, there is a development build that has development-specific
 advantages over the production build, such as automatic module replacement,
 server restarting, and source maps for debugging. To use the development build,
-run the `watch` script in the background or in a separate terminal to have
+run the `webpack` script in the background or in a separate terminal to have
 Webpack compile the development build and watch for any changes in the code.
+The assets will be served by [webpack-dev-server][webpack-dev-server].
 Then run the development server.
 
 ```bash
-npm run watch # run this in the background or in a separate terminal
+npm run webpack # run this in the background or in a separate terminal
 npm run dev
 ```
 
@@ -86,3 +87,4 @@ npm run test
 [dotenv]: <https://github.com/motdotla/dotenv>
 [eslint]: <http://eslint.org/>
 [mocha]: <https://mochajs.org/>
+[webpack-dev-server]: <https://github.com/webpack/webpack-dev-server>
