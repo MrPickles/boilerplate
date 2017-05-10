@@ -7,8 +7,9 @@
     "start": "npm run build && npm run prod",
     "dev": "NODE_ENV=development nodemon index.js",
     "prod": "NODE_ENV=production node index.js",
-    "build": "npm run clean && NODE_ENV=production webpack -p",
-    "watch": "npm run clean && NODE_ENV=development webpack --watch",
+    "build": "npm run copy && NODE_ENV=production webpack -p",
+    "copy": "copyfiles public/img/* dist",
+    "webpack": "npm run copy && NODE_ENV=development webpack-dev-server",
     "clean": "rm -rf ./dist/",
     "test": "NODE_ENV=test mocha",
     "coverage": "istanbul cover _mocha -- -R spec",
@@ -55,6 +56,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-register": "^6.18.0",
     "chai": "^3.5.0",
+    "copyfiles": "^1.2.0",
     "css-loader": "^0.26.1",
     "css-modules-require-hook": "^4.0.6",
     "enzyme": "^2.8.2",
@@ -79,7 +81,8 @@
     "style-loader": "^0.13.1",
     "webpack": "^2.3.3",
     "webpack-dev-middleware": "^1.10.1",
-    "webpack-hot-middleware": "^2.18.0",
-    "webpack-node-externals": "^1.5.4"
+    "webpack-dev-server": "^2.4.5",
+    "webpack-node-externals": "^1.5.4",
+    "write-file-webpack-plugin": "^4.0.2"
   }
 }
