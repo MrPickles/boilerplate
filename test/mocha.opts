@@ -1,5 +1,0 @@
---compilers js:babel-register
---require babel-polyfill
---require css-modules-require-hook/preset
---require test/setup.js
-{app,server}/**/*.spec.{js,jsx}
