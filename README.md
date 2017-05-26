@@ -59,7 +59,7 @@ npm run dev
 
 ### Linting and Testing
 
-This repository uses [ESLint][eslint] and [Mocha][mocha] for linting and
+This repository uses [ESLint][eslint] and [Jest][jest] for linting and
 testing, respectively. To lint the code base, simply run the `lint` script. You
 can change the lint rules in `.eslintrc.json` based on your style preferences.
 
@@ -86,5 +86,5 @@ npm run test
 [sass]: <http://sass-lang.com/>
 [dotenv]: <https://github.com/motdotla/dotenv>
 [eslint]: <http://eslint.org/>
-[mocha]: <https://mochajs.org/>
+[jest]: <https://facebook.github.io/jest/>
 [webpack-dev-server]: <https://github.com/webpack/webpack-dev-server>
