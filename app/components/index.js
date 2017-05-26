@@ -1,7 +1,8 @@
-const req = require.context('.', true, /^\..*\/[^/]+\/index\.js$/);
+// Grab all js files (except index, test, spec, and storybook files).
+const req = require.context('.', true, /^\.\/((?!index|\.test|\.spec|\.stories).)*\.jsx?$/);
 
-// Find all recursive instances of "index.js" and export their modules.
+// Find all js files and export their default modules as its file name.
 req.keys().forEach((key) => {
-  const componentName = key.replace(/^\..*\/([^/]+)\/index\.js$/, '$1');
+  const componentName = key.replace(/^\..*\/([^/]+)\.jsx?$/, '$1');
   module.exports[componentName] = req(key).default;
 });
