@@ -18,15 +18,16 @@ props. Hence a typical container should look something like the snippet below.
 
 ```javascript
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import { HostComponent } from 'components';
 
 /* Implement mapStateToProps and mapDispatchToProps here. */
 
-const TestContainer = connect(
+const TestContainer = withRouter(connect(
   mapStateToProps,
   mapDispatchToProps,
-)(HostComponent);
+)(HostComponent));
 
 export default TestContainer;
 ```
