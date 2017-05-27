@@ -3,6 +3,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
+import { MemoryRouter } from 'react-router-dom';
 
 import IndexPage from './IndexPage';
 
@@ -16,7 +17,12 @@ describe('Basic Arithmetic', () => {
 describe('<IndexPage />', () => {
   it('calls componentDidMount', () => {
     sinon.spy(IndexPage.prototype, 'componentDidMount');
-    mount(<IndexPage />);
+    // The component needs to be wrapped by a router due to React Router 4.
+    mount(
+      <MemoryRouter>
+        <IndexPage />
+      </MemoryRouter>
+    );
     expect(IndexPage.prototype.componentDidMount.calledOnce).to.equal(true);
   });
 });
