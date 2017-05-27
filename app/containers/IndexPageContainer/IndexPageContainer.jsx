@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 
 import { testAction, PING } from 'actions';
 import { IndexPage } from 'components';
@@ -17,9 +18,9 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const IndexPageContainer = connect(
+const IndexPageContainer = withRouter(connect(
   mapStateToProps,
   mapDispatchToProps,
-)(IndexPage);
+)(IndexPage));
 
 export default IndexPageContainer;

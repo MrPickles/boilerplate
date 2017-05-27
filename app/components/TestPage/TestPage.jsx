@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/lib/Button';
 
 import styles from './TestPage.scss';

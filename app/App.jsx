@@ -1,11 +1,13 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
+import { Route, Switch } from 'react-router-dom'
 
-import styles from './Layout.scss';
+import { IndexPageContainer } from 'containers';
+import { TestPage, NotFoundPage } from 'components';
 
-const Layout = props => (
-  <div className={styles.layout}>
+const App = () => (
+  <div>
     <Helmet
       title="Boilerplate!"
       meta={[
@@ -16,12 +18,12 @@ const Layout = props => (
         { rel: 'icon', href: '/public/img/redux.png' },
       ]}
     />
-    <div className="layout-content">{props.children}</div>
+    <Switch>
+      <Route exact path="/" component={IndexPageContainer} />
+      <Route path="/test" component={TestPage} />
+      <Route component={NotFoundPage} />
+    </Switch>
   </div>
 );
 
-Layout.propTypes = {
-  children: PropTypes.element.isRequired,
-};
-
-export default Layout;
+export default App;

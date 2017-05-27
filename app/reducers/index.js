@@ -1,9 +1,6 @@
 import { combineReducers } from 'redux';
-import { routerReducer as routing } from 'react-router-redux';
 
-const reducers = {
-  routing,
-};
+const reducers = {};
 
 // Grab all files (except index and spec files).
 const req = require.context('.', true, /^\.\/((?!index|\.spec).)*\.js$/);
