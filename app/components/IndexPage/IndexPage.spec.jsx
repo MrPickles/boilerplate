@@ -21,8 +21,7 @@ describe('<IndexPage />', () => {
     mount(
       <MemoryRouter>
         <IndexPage />
-      </MemoryRouter>
-    );
+      </MemoryRouter>);
     expect(IndexPage.prototype.componentDidMount.calledOnce).to.equal(true);
   });
 });

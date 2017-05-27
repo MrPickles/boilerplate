@@ -32,4 +32,11 @@ IndexPage.propTypes = {
   pinging: PropTypes.bool,
 };
 
+IndexPage.defaultProps = {
+  onClick: () => {},
+  onPing: () => {},
+  amount: 0,
+  pinging: false,
+};
+
 export default IndexPage;
