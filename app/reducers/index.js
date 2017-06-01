@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import logger from 'loglevel';
 
 const reducers = {};
 
@@ -8,6 +9,9 @@ const req = require.context('.', true, /^\.\/((?!index|\.spec).)*\.js$/);
 req.keys().forEach((key) => {
   // Set store name as base filename.
   const storeName = key.replace(/^\..*\/(.*)\.js$/, '$1');
+  if (reducers[storeName]) {
+    logger.error(`The store "${storeName}" has a duplicate import. Please rename them accordingly.`);
+  }
   reducers[storeName] = req(key).default;
 });
 
