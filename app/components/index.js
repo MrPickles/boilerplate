@@ -1,4 +1,4 @@
-import logger from 'loglevel';
+const logger = require('loglevel');
 
 // Grab all js files (except index, test, spec, and storybook files).
 const req = require.context('.', true, /^\.\/((?!index|\.test|\.spec|\.stories).)*\.jsx?$/);

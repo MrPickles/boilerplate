@@ -1,4 +1,4 @@
-import logger from 'loglevel';
+const logger = require('loglevel');
 
 const req = require.context('.', true, /^\.\/((?!index|\.spec).)*\.js$/);
 
